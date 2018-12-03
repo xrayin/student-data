@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/students', 'StudentController@allStudents');
 
 Route::get('/students/{id}', 'StudentController@getStudent');
+
+Route::get('/students/{studentId}/schedules/groups/{groupId}/classes', 'ClassesController@allClasses');

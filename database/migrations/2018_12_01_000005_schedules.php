@@ -18,6 +18,9 @@ class Schedules extends Migration
         });
 
         Schema::table('schedules', function($table) {
+
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id')->references('student_id')->on('students');
             $table->integer('group_id')->unsigned();
             $table->foreign('group_id')->references('group_id')->on('groups');
             $table->integer('subject_id')->unsigned();

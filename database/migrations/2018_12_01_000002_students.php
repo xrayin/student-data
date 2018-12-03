@@ -20,15 +20,6 @@ class Students extends Migration
             $table->string('email')->unique();
             $table->string('password')->default('secret');
         });
-
-        Schema::table('students', function($table) {
-            $table->integer('schedule_id')->unsigned();
-            $table->foreign('schedule_id')->references('schedule_id')->on('schedules');
-            $table->integer('group_id')->unsigned();
-            $table->foreign('group_id')->references('group_id')->on('groups');
-            $table->integer('subject_id')->unsigned();
-            $table->foreign('subject_id')->references('subject_id')->on('subjects');
-        });
     }
 
     /**

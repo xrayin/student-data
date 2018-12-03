@@ -19,6 +19,9 @@ class Subjects extends Migration
         });
 
         Schema::table('subjects', function($table) {
+
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id')->references('student_id')->on('students');
             $table->integer('class_id')->unsigned();
             $table->foreign('class_id')->references('class_id')->on('classes');
         });
