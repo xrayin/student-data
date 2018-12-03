@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students', 'StudentController@all');
+Route::get('/students', 'StudentController@allStudents');
+
+Route::get('/students/{id}', 'StudentController@getStudent');

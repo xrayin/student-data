@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Students extends Migration
+class Groups extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,11 +13,14 @@ class Students extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('groups', function (Blueprint $table) {
+            $table->increments('group_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password')->default('secret');
+        });
+
+        Schema::table('groups', function($table) {
+            $table->integer('class_id')->unsigned();
+            $table->foreign('class_id')->references('class_id')->on('classes');
         });
     }
 
@@ -29,6 +31,6 @@ class Students extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('groups');
     }
 }

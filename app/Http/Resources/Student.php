@@ -21,9 +21,4 @@ class Student extends JsonResource
             'password' => $this->password
         ];
     }
-
-    public static function all()
-    {
-        return $students = StudentModel::all();
-    }
 }
