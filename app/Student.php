@@ -26,9 +26,18 @@ class Student extends Model
         return $this->hasMany(GroupEnrollment::class, 'student_id', 'student_id')->join('groups', 'group_enrollments.enrollment_id', '=', 'groups.group_id');
     }
 
-    public function subject()
+    public function allSubjects()
     {
-        return $this->belongsTo(Subject::class, 'student_id', 'student_id');
+        return $this->hasMany(SubjectEnrollment::class, 'student_id', 'student_id')
+            ->join('subjects', 'subject_enrollments.subject_id', '=', 'subjects.subject_id');
+    }
+
+    public function allClasses()
+    {
+        return $this->hasMany(SubjectEnrollment::class, 'student_id', 'student_id')
+            ->join('subjects', 'subject_enrollments.subject_id', '=', 'subjects.subject_id')
+            ->join('subject_class_enrollments', 'subjects.subject_id', '=','subject_class_enrollments.subject_id')
+            ->join('classes', 'subject_class_enrollments.class_id', '=', 'classes.class_id');
     }
 
 }
