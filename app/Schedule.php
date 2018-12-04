@@ -16,6 +16,6 @@ class Schedule extends Model
 
     public function student()
     {
-        return $this->hasOne(Student::class);
+        return $this->hasMany(Student::class, 'student_id', 'schedule_id');
     }
 }

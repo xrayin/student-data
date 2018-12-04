@@ -18,17 +18,17 @@ class Student extends Model
 
     public function schedule()
     {
-        return $this->hasOne(Schedule::class, 'id', 'schedule');
+        return $this->belongsTo(Schedule::class, 'student_id', 'student_id');
     }
 
     public function group()
     {
-        return $this->hasOne(Group::class);
+        return $this->hasMany(GroupEnrollment::class, 'student_id', 'student_id')->join('groups', 'group_enrollments.enrollment_id', '=', 'groups.group_id');
     }
 
     public function subject()
     {
-        return $this->hasOne(Subject::class);
+        return $this->belongsTo(Subject::class, 'student_id', 'student_id');
     }
 
 }

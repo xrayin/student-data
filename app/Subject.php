@@ -14,4 +14,8 @@ class Subject extends Model
 {
     protected $primaryKey = 'subject_id';
 
+    public function student()
+    {
+        return $this->hasMany(Student::class, 'student_id', 'subject_id');
+    }
 }
