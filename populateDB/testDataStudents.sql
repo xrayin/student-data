@@ -20,11 +20,6 @@ INSERT INTO subjects (name) VALUES ("subjectTwo");
 INSERT INTO subjects (name) VALUES ("subjectThree");
 INSERT INTO subjects (name) VALUES ("subjectFour");
 
-INSERT INTO schedules (group_id, subject_id, student_id) VALUES (1, 1, 1);
-INSERT INTO schedules (group_id, subject_id, student_id) VALUES (2, 2, 1);
-INSERT INTO schedules (group_id, subject_id, student_id) VALUES (3, 3, 2);
-INSERT INTO schedules (group_id, subject_id, student_id) VALUES (4, 4, 2);
-
 INSERT INTO group_enrollments (student_id, group_id) VALUES (1, 1);
 INSERT INTO group_enrollments (student_id, group_id) VALUES (1, 2);
 INSERT INTO group_enrollments (student_id, group_id) VALUES (2, 3);
@@ -39,10 +34,10 @@ INSERT INTO group_class_enrollments (group_id, class_id) VALUES (1, 1);
 INSERT INTO group_class_enrollments (group_id, class_id) VALUES (1, 2);
 INSERT INTO group_class_enrollments (group_id, class_id) VALUES (2, 3);
 INSERT INTO group_class_enrollments (group_id, class_id) VALUES (2, 4);
-INSERT INTO group_class_enrollments (group_id, class_id) VALUES (3, 1);
-INSERT INTO group_class_enrollments (group_id, class_id) VALUES (3, 2);
-INSERT INTO group_class_enrollments (group_id, class_id) VALUES (4, 3);
-INSERT INTO group_class_enrollments (group_id, class_id) VALUES (4, 4);
+INSERT INTO group_class_enrollments (group_id, class_id) VALUES (3, 5);
+INSERT INTO group_class_enrollments (group_id, class_id) VALUES (3, 6);
+INSERT INTO group_class_enrollments (group_id, class_id) VALUES (4, 7);
+INSERT INTO group_class_enrollments (group_id, class_id) VALUES (4, 8);
 
 INSERT INTO subject_class_enrollments (subject_id, class_id) VALUES (1, 1);
 INSERT INTO subject_class_enrollments (subject_id, class_id) VALUES (1, 2);

@@ -16,14 +16,18 @@ class Student extends Model
 
     protected $primaryKey = 'student_id';
 
-    public function schedule()
+    public function allGroups()
     {
-        return $this->belongsTo(Schedule::class, 'student_id', 'student_id');
+        return $this->hasMany(GroupEnrollment::class, 'student_id', 'student_id')
+            ->join('groups', 'group_enrollments.enrollment_id', '=', 'groups.group_id');
     }
 
-    public function group()
+    public function allClassesOnGroups()
     {
-        return $this->hasMany(GroupEnrollment::class, 'student_id', 'student_id')->join('groups', 'group_enrollments.enrollment_id', '=', 'groups.group_id');
+        return $this->hasMany(GroupEnrollment::class, 'student_id', 'student_id')
+            ->join('groups', 'group_enrollments.enrollment_id', '=', 'groups.group_id')
+            ->join('group_class_enrollments', 'groups.group_id', '=', 'group_class_enrollments.group_id')
+            ->join('classes', 'group_class_enrollments.class_id', '=', 'classes.class_id');
     }
 
     public function allSubjects()
@@ -32,7 +36,7 @@ class Student extends Model
             ->join('subjects', 'subject_enrollments.subject_id', '=', 'subjects.subject_id');
     }
 
-    public function allClasses()
+    public function allClassesOnSubjects()
     {
         return $this->hasMany(SubjectEnrollment::class, 'student_id', 'student_id')
             ->join('subjects', 'subject_enrollments.subject_id', '=', 'subjects.subject_id')
