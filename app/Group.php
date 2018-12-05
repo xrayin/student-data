@@ -14,8 +14,9 @@ class Group extends Model
 {
     protected $primaryKey = 'group_id';
 
-    public function group()
+    public function allStudents()
     {
-        return $this->hasMany(GroupEnrollment::class, 'group_id', 'group_id');
+        return $this->hasMany(GroupEnrollment::class, 'group_id', 'group_id')
+            ->join('students', 'group_enrollments.student_id', '=', 'students.student_id');
     }
 }
